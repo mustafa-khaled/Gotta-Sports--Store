@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <Header />
-      <main>
+      <main className="mt-[70px]">
         <Routes>
           <Route path="home" element={<Home />} />
         </Routes>

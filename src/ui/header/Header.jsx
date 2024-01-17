@@ -17,7 +17,7 @@ function Header() {
   }
 
   return (
-    <header className="flex h-[70px] items-center bg-red-400">
+    <header className="bg-bgWhite fixed top-0 z-50 flex h-[70px] w-full items-center shadow-md">
       <Container>
         <div className="flex justify-between">
           <Logo />

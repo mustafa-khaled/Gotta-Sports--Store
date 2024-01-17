@@ -1,4 +1,4 @@
-import { MdDehaze, MdClose } from "react-icons/md";
+import { MdDensityMedium, MdClose } from "react-icons/md";
 
 function ToggleList({ showList, toggleList }) {
   return (
@@ -6,7 +6,7 @@ function ToggleList({ showList, toggleList }) {
       {showList ? (
         <MdClose className="cursor-pointer text-2xl sm:text-3xl" />
       ) : (
-        <MdDehaze className="cursor-pointer text-2xl sm:text-3xl" />
+        <MdDensityMedium className="cursor-pointer text-2xl sm:text-3xl" />
       )}
     </div>
   );
