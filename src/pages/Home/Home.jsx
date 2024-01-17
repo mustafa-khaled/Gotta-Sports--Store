@@ -1,9 +1,11 @@
+import Bestsellers from "./Bestsellers";
 import HeroSection from "./HeroSection";
 
 function Home() {
   return (
-    <div>
+    <div className="flex flex-col gap-[40px]">
       <HeroSection />
+      <Bestsellers />
     </div>
   );
 }

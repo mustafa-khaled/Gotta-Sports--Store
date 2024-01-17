@@ -5,7 +5,7 @@ import { heroSectionImages } from "../../data/data";
 function HeroSection() {
   return (
     <div>
-      <div className="bg-yellow relative flex h-[70vh] items-center justify-center">
+      <div className="relative flex h-[70vh] items-center justify-center bg-yellow">
         <img
           src={image}
           alt="main img"
@@ -23,9 +23,9 @@ function HeroSection() {
           return (
             <div
               key={el.id}
-              className="relative h-[30vh] w-full overflow-hidden sm:h-[40vh]"
+              className="relative h-[300px] w-full overflow-hidden"
             >
-              <p className="text-bgWhite absolute bottom-[10px] left-[3px] z-50 uppercase ">
+              <p className="absolute bottom-[10px] left-[3px] z-50 uppercase text-bgWhite ">
                 {el.title}
               </p>
 

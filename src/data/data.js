@@ -3,7 +3,7 @@ import heroSectionImage2 from "../assets/fe2.jpg";
 import heroSectionImage3 from "../assets/fe3.png";
 
 export const headerData = [
-  { id: 1, title: "Home", to: "/home" },
+  { id: 1, title: "Home", to: "/" },
   { id: 2, title: "Shop", to: "/shop" },
   { id: 3, title: "Blog", to: "/blog" },
 ];

@@ -5,11 +5,11 @@ import Footer from "./ui/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="text-textColor">
       <Header />
       <main className="mt-[70px]">
         <Routes>
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </main>
       <Footer />
