@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add spacial styles to the active route */
+.header-links a.active {
+  color: #d2401e;
+}
