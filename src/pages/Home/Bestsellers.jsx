@@ -7,10 +7,11 @@ import imageTwo from "../../assets/sho1-2.png";
 import imageThree from "../../assets/sho1-3.png";
 import imageFour from "../../assets/sho1-4.png";
 import ShopItem from "../../features/shop/ShopItem";
+import GridContainer from "../../ui/GridContainer";
 
 const categories = ["All Shoes", "Men's", "Women's", "Kid's"];
 
-const images = [
+const products = [
   {
     id: 1,
     title: "Arsenal Home Jersey",
@@ -61,11 +62,11 @@ function Bestsellers() {
           ))}
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
-          {images.map((item) => {
+        <GridContainer>
+          {products.map((item) => {
             return <ShopItem item={item} key={item.id} />;
           })}
-        </div>
+        </GridContainer>
       </div>
     </Container>
   );

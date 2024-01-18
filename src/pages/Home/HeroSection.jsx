@@ -1,4 +1,5 @@
 import { heroSectionImages } from "../../data/data";
+
 import image from "../../assets/slider-img-1.png";
 import textImage from "../../assets/text-slider-1.png";
 
