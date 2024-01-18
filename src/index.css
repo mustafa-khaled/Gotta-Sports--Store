@@ -9,6 +9,7 @@ body {
   letter-spacing: 1px;
 }
 
+/* Hero section image */
 .hero-section-image {
   animation: go-top 5s linear infinite;
 }
@@ -30,4 +31,9 @@ body {
     -ms-transform: translateY(-15px);
     -o-transform: translateY(-15px);
   }
+}
+
+/*  Add spacial styles to the shop item*/
+.shop-item:hover .wishlist-icon {
+  opacity: 1;
 }
