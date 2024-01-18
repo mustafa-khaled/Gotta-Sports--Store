@@ -1,6 +1,7 @@
 import Bestsellers from "./Bestsellers";
 import Gallery from "./Gallery";
 import HeroSection from "./HeroSection";
+import OurFeatured from "./OurFeatured";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <HeroSection />
       <Bestsellers />
       <Gallery />
+      <OurFeatured />
     </div>
   );
 }
