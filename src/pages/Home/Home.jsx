@@ -1,13 +1,13 @@
-import Bestsellers from "./Bestsellers";
+import Categories from "./Categories";
 import HeroSection from "./HeroSection";
-import OurFeatured from "./OurFeatured";
+import Welcome from "./Welcome";
 
 function Home() {
   return (
     <div className="flex flex-col gap-[50px]">
       <HeroSection />
-      <Bestsellers />
-      <OurFeatured />
+      <Categories />
+      <Welcome />
     </div>
   );
 }

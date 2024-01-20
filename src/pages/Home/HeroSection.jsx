@@ -23,7 +23,7 @@ function HeroSection() {
 
   return (
     <div
-      className="relative flex h-[calc(100vh-70px)] items-center justify-center bg-cover text-bgWhite"
+      className="relative flex h-[calc(100vh-70px)] items-center justify-center bg-cover text-bgWhite transition-all"
       style={{
         backgroundImage: `url(${SliderData[imageIndex]})`,
         backgroundPosition: "50%",
