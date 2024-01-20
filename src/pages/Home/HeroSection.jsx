@@ -1,48 +1,67 @@
-import { heroSectionImages } from "../../data/data";
+import { useState } from "react";
+import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
+import { SliderData } from "../../data/data";
 
-import image from "../../assets/slider-img-1.png";
-import textImage from "../../assets/text-slider-1.png";
+import Container from "../../ui/Container";
 
 function HeroSection() {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const showNextImage = () => {
+    setImageIndex((index) => {
+      if (index === SliderData.length - 1) return 0;
+      return index + 1;
+    });
+  };
+
+  const showPrevImage = () => {
+    setImageIndex((index) => {
+      if (index === 0) return SliderData.length - 1;
+      return index - 1;
+    });
+  };
+
   return (
-    <div>
-      <div className="relative flex h-[70vh] items-center justify-center bg-yellow">
-        <img
-          src={image}
-          alt="main img"
-          className="hero-section-image z-30 w-[85%] sm:w-[500px]"
-        />
-        <img
-          src={textImage}
-          alt="text"
-          className="absolute left-[50%] top-[50%] z-20 translate-x-[-50%] translate-y-[-50%] sm:w-[70%]"
-        />
-      </div>
+    <div
+      className="relative flex h-[calc(100vh-70px)] items-center justify-center bg-cover text-bgWhite"
+      style={{
+        backgroundImage: `url(${SliderData[imageIndex]})`,
+        backgroundPosition: "50%",
+      }}
+    >
+      <Container>
+        <div
+          className={`flex flex-col ${imageIndex > 0 ? "sm:items-end" : "sm:items-start"} text-center font-medium sm:text-left`}
+        >
+          <div>
+            <p className="uppercase">New Collection</p>
+            <h1 className="my-[10px] text-4xl sm:text-7xl">
+              Skateboard 209 <br />
+              Nitro Circus
+            </h1>
+            <p className="font-normal">
+              A team of 5 experienced judges will decide <br />
+              the winners through a scoring system
+            </p>
+          </div>
+        </div>
+      </Container>
 
-      <div className="flex flex-col sm:flex-row">
-        {heroSectionImages.map((el) => {
-          return (
-            <div
-              key={el.id}
-              className="relative h-[300px] w-full overflow-hidden"
-            >
-              <p className="absolute bottom-[10px] left-[3px] z-50 uppercase text-bgWhite ">
-                {el.title}
-              </p>
+      <button
+        className="absolute left-[10px] top-[50%] flex translate-y-[-50%] items-center justify-center rounded-full 
+        border border-lightGray p-[5px] transition-all hover:bg-bgWhite hover:text-primary sm:left-[30px] sm:p-[10px]"
+        onClick={showPrevImage}
+      >
+        <MdArrowBackIosNew className="text-lg sm:text-2xl" />
+      </button>
 
-              <img
-                src={el.image}
-                alt="Gallery Img"
-                className="hover:scale-130 h-[40vh] w-full object-cover transition-transform duration-300 
-              hover:scale-[1.1] hover:transform"
-                style={{
-                  backgroundPosition: "50%",
-                }}
-              />
-            </div>
-          );
-        })}
-      </div>
+      <button
+        className="absolute right-[10px] top-[50%] flex translate-y-[-50%] items-center justify-center rounded-full 
+        border border-lightGray p-[5px] transition-all hover:bg-bgWhite hover:text-primary sm:right-[30px] sm:p-[10px]"
+        onClick={showNextImage}
+      >
+        <MdArrowForwardIos className="text-lg sm:text-2xl" />
+      </button>
     </div>
   );
 }
