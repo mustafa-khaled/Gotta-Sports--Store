@@ -1,6 +1,7 @@
-import Categories from "./Categories";
 import HeroSection from "./HeroSection";
+import Categories from "./Categories";
 import Welcome from "./Welcome";
+import CustomersReview from "./CustomersReview";
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
       <HeroSection />
       <Categories />
       <Welcome />
+      <CustomersReview />
     </div>
   );
 }

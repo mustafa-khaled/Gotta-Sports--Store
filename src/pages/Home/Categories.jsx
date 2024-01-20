@@ -9,7 +9,7 @@ import GridContainer from "../../ui/GridContainer";
 const categoriesTags = ["Featured", "Latest", "Top Rating"];
 
 function Categories() {
-  const [category, setCategory] = useState("All Shoes");
+  const [category, setCategory] = useState("Featured");
 
   return (
     <Container>

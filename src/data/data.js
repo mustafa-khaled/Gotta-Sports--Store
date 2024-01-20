@@ -1,6 +1,10 @@
 import imageSlider1 from "../assets/slide1.webp";
 import imageSlider2 from "../assets/slide2.webp";
 
+import person1 from "../assets/person1.webp";
+import person2 from "../assets/person2.webp";
+import person3 from "../assets/person3.webp";
+
 import product1 from "../assets/sho1-1.png";
 import product2 from "../assets/sho1-2.png";
 import product3 from "../assets/sho1-3.png";
@@ -40,5 +44,39 @@ export const products = [
     title: "Arsenal Home Jersey",
     images: [product3, product4],
     price: 150,
+  },
+];
+
+export const reviewsData = [
+  {
+    id: 1,
+    name: "Dianne Russell",
+    image: person1,
+  },
+  {
+    id: 2,
+    name: "Annette Black",
+    image: person2,
+  },
+  {
+    id: 3,
+    name: "Jerome Bell",
+    image: person3,
+  },
+
+  {
+    id: 4,
+    name: "Dianne Russell",
+    image: person1,
+  },
+  {
+    id: 5,
+    name: "Annette Black",
+    image: person2,
+  },
+  {
+    id: 6,
+    name: "Jerome Bell",
+    image: person3,
   },
 ];
