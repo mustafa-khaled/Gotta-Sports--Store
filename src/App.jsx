@@ -1,21 +1,30 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./ui/header/Header";
-import Home from "./pages/Home/Home";
 import Footer from "./ui/Footer";
-import Shop from "./features/shop/Shop";
-import Blog from "./pages/Blog/Blog";
+import Loader from "./ui/loader/Loader";
+import ScrollToTop from "./ui/ScrollToTop";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const Shop = lazy(() => import("./features/shop/Shop"));
+const Blog = lazy(() => import("./pages/Blog/Blog"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
   return (
     <div className="text-textColor">
+      <ScrollToTop />
       <Header />
       <main className="mt-[70px]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/blog" element={<Blog />} />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
