@@ -10,6 +10,13 @@ import product2 from "../assets/sho1-2.png";
 import product3 from "../assets/sho1-3.png";
 import product4 from "../assets/sho1-4.png";
 
+import blogImg1 from "../assets/blog_1_1024x1024.webp";
+import blogImg2 from "../assets/blog_2_1024x1024.webp";
+import blogImg3 from "../assets/blog_3_1024x1024.webp";
+import blogImg4 from "../assets/blog_4_1024x1024.webp";
+import blogImg5 from "../assets/blog_5_1024x1024.webp";
+import blogImg6 from "../assets/blog_6_1024x1024.webp";
+
 export const SliderData = [imageSlider1, imageSlider2];
 
 export const headerData = [
@@ -79,4 +86,13 @@ export const reviewsData = [
     name: "Jerome Bell",
     image: person3,
   },
+];
+
+export const blogArticlesData = [
+  { id: 1, title: "Training During Ramadan", image: blogImg1 },
+  { id: 2, title: "Collagen And White Tissue", image: blogImg2 },
+  { id: 3, title: "What’s The Best Time To Gym?", image: blogImg3 },
+  { id: 4, title: "Post Format Video Blogs", image: blogImg4 },
+  { id: 5, title: "Post Format Gallery Blogs", image: blogImg5 },
+  { id: 6, title: "Post Format Audio Blogs", image: blogImg6 },
 ];
