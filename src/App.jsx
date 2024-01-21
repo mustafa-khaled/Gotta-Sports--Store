@@ -4,6 +4,7 @@ import Header from "./ui/header/Header";
 import Home from "./pages/Home/Home";
 import Footer from "./ui/Footer";
 import Shop from "./features/shop/Shop";
+import Blog from "./pages/Blog/Blog";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </main>
       <Footer />

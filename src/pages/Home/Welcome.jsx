@@ -2,7 +2,7 @@ import image from "../../assets/wellcome.webp";
 
 function Welcome() {
   return (
-    <div className="flex min-h-[60vh] flex-col bg-gray sm:flex-row">
+    <div className="flex min-h-[60vh] flex-col-reverse bg-gray sm:flex-row">
       <div
         className="h-[60vh] w-full bg-cover sm:w-[50%]"
         style={{ backgroundImage: `url(${image})`, backgroundPosition: "50%" }}
