@@ -12,9 +12,9 @@ function LinksSmallScreen({ showList, closeList }) {
       ></div>
       <ul
         className={`header-links fixed ${
-          showList ? "right-0" : "right-[-100%]"
-        } bg-bgWhite border-lightGray top-[70px] z-50 flex h-[100vh]
-             w-[90%] flex-col items-center justify-center gap-[30px] border-t transition-all sm:hidden
+          showList ? "left-0" : "left-[-100%]"
+        } top-[70px] z-50 flex h-[100vh] w-[90%] flex-col
+             items-center justify-center gap-[30px] border-t border-lightGray bg-bgWhite transition-all sm:hidden
         `}
       >
         {headerData.map((el) => (
@@ -22,7 +22,7 @@ function LinksSmallScreen({ showList, closeList }) {
             <NavLink
               to={el.to}
               onClick={closeList}
-              className={"hover:text-primary text-sm font-bold uppercase"}
+              className={"text-sm font-bold uppercase hover:text-primary"}
             >
               {el.title}
             </NavLink>

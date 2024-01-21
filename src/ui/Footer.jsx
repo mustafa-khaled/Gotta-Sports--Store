@@ -11,7 +11,7 @@ function Footer() {
       <Container>
         <div className="flex items-center justify-between">
           <div>
-            <p>&copy; {currentYear} Gota. All Rights Reserved.</p>
+            <p>&copy; {currentYear} Skato. All Rights Reserved.</p>
           </div>
           <div className="flex gap-[10px]">
             <Link
