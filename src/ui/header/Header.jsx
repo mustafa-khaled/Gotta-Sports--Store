@@ -8,6 +8,7 @@ import LinksSmallScreen from "./LinksSmallScreen";
 import ToggleList from "./ToggleList";
 import CartIcon from "./CartIcon";
 import WishListIcon from "./WishListIcon";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [showList, setShowList] = useState(false);
@@ -33,7 +34,9 @@ function Header() {
           <LinksSmallScreen showList={showList} closeList={closeList} />
 
           <div className="flex items-center gap-[10px]">
-            <MdPersonOutline className="cursor-pointer text-xl" />
+            <Link to={"/login"}>
+              <MdPersonOutline className="cursor-pointer text-xl" />
+            </Link>
             <WishListIcon />
             <CartIcon />
           </div>

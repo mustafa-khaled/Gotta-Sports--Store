@@ -9,6 +9,7 @@ import ScrollToTop from "./ui/ScrollToTop";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Shop = lazy(() => import("./features/shop/Shop"));
 const Blog = lazy(() => import("./pages/Blog/Blog"));
+const Authentication = lazy(() => import("./features/auth/Authentication"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/login" element={<Authentication />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
