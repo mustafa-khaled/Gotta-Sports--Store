@@ -1,69 +1,37 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { useRegister } from "./registerUser";
+import { useLoginUser } from "./useLoginUser";
 
-import toast from "react-hot-toast";
 import Button from "../../ui/Button";
 import Container from "../../ui/Container";
 import Loader from "../../ui/loader/Loader";
-import { useNavigate } from "react-router-dom";
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isLading, setIsLading] = useState(false);
 
-  const navigate = useNavigate();
+  const {
+    register,
+    isLoading: isRegistering,
+    error: registerError,
+  } = useRegister();
 
-  function registerUser() {
-    if (password !== confirmPassword) {
-      setError("Password do not match.");
-      return;
-    }
-
-    setIsLading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // On Success
-        const user = userCredential.user;
-        setIsLading(false);
-        toast.success("Account Created successfully.");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        navigate("/");
-      })
-      .catch((error) => {
-        setIsLading(false);
-        setError(error.message);
-      });
-  }
-
-  function loginUser() {
-    toast.success("You logged in successfully.");
-    setEmail("");
-    setPassword("");
-  }
+  const { login, isLoading: isLogging, error: loginError } = useLoginUser();
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    if (!email || !password) {
-      setError("Please Fill Out All Fields.");
-      return;
-    }
+    if (!email || !password) return;
 
     if (isLogin) {
-      loginUser();
+      login({ email, password });
     } else {
-      registerUser();
+      register({ email, password });
     }
   }
 
-  if (isLading) return <Loader />;
+  if (isRegistering || isLogging) return <Loader />;
+
   return (
     <Container>
       <form
@@ -99,28 +67,15 @@ function AuthForm() {
           />
         </div>
 
-        {!isLogin && (
-          <div className="w-full">
-            <label htmlFor="confirm password">Confirm Password:</label>
-            <input
-              type="password"
-              name="confirm password"
-              className="mt-[5px] w-full rounded-lg border border-gray p-[5px] outline-none focus:border-darkGray"
-              id="confirm password"
-              placeholder="Write the password again"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-        )}
+        <Button disabled={isRegistering}>Login</Button>
 
-        <Button>Login</Button>
-
-        {error && (
-          <p className="mx-auto rounded-xl bg-red-300 px-[5px] text-red-500">
-            {error}
-          </p>
-        )}
+        {registerError ||
+          (loginError && (
+            <p className="mx-auto rounded-lg bg-red-300 px-[5px] text-red-500">
+              {registerError?.message || "An error occurred."}
+              {loginError?.message || "An error occurred."}
+            </p>
+          ))}
 
         <p
           className="mx-auto cursor-pointer text-darkGray underline"
