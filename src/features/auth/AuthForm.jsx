@@ -1,24 +1,82 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
+
+import toast from "react-hot-toast";
 import Button from "../../ui/Button";
 import Container from "../../ui/Container";
+import Loader from "../../ui/loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(false);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLading, setIsLading] = useState(false);
 
+  const navigate = useNavigate();
+
+  function registerUser() {
+    if (password !== confirmPassword) {
+      setError("Password do not match.");
+      return;
+    }
+
+    setIsLading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // On Success
+        const user = userCredential.user;
+        setIsLading(false);
+        toast.success("Account Created successfully.");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        navigate("/");
+      })
+      .catch((error) => {
+        setIsLading(false);
+        setError(error.message);
+      });
+  }
+
+  function loginUser() {
+    toast.success("You logged in successfully.");
+    setEmail("");
+    setPassword("");
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!email || !password) {
+      setError("Please Fill Out All Fields.");
+      return;
+    }
+
+    if (isLogin) {
+      loginUser();
+    } else {
+      registerUser();
+    }
+  }
+
+  if (isLading) return <Loader />;
   return (
     <Container>
-      <h2 className="mb-[10px] text-center text-2xl sm:text-3xl">
-        {isLogin ? "Login" : "Register"}
-      </h2>
-      <form className="mx-auto flex flex-col items-start gap-[15px] rounded-lg bg-gray p-[20px] sm:w-[400px]">
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto flex flex-col items-start gap-[15px] rounded-lg bg-gray p-[20px] sm:w-[400px]"
+      >
+        <h2 className="mx-auto mb-[10px] text-2xl sm:text-3xl">
+          {isLogin ? "Login" : "Register"}
+        </h2>
         <div className="w-full">
           <label htmlFor="email">Email:</label>
           <input
-            type="text"
+            type="email"
             name="email"
             className="mt-[5px] w-full rounded-lg border border-gray p-[5px] outline-none focus:border-darkGray"
             id="email"
@@ -57,6 +115,12 @@ function AuthForm() {
         )}
 
         <Button>Login</Button>
+
+        {error && (
+          <p className="mx-auto rounded-xl bg-red-300 px-[5px] text-red-500">
+            {error}
+          </p>
+        )}
 
         <p
           className="mx-auto cursor-pointer text-darkGray underline"
