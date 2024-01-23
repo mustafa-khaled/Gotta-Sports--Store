@@ -3,6 +3,8 @@ import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 import { SliderData } from "../../data/data";
 
 import Container from "../../ui/Container";
+import Button from "../../ui/Button";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   const [imageIndex, setImageIndex] = useState(0);
@@ -39,10 +41,15 @@ function HeroSection() {
               Skateboard 209 <br />
               Nitro Circus
             </h1>
-            <p className="font-normal">
+            <p className="mb-[10px] font-normal">
               A team of 5 experienced judges will decide <br />
               the winners through a scoring system
             </p>
+            <div className="mx-auto w-[100px] sm:mx-0">
+              <Link to="/shop">
+                <Button>Shop now</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </Container>
